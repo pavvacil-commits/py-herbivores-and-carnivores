@@ -1,8 +1,12 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False) ->\
-            None:
+    def __init__(
+            self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.health = health
         self.name = name
         self.hidden = hidden
@@ -23,7 +27,8 @@ class Herbivore(Animal):
 
     def hide(self) -> None:
         self.hidden = not self.hidden
-        print(f"{self.name} now {"hidden" if self.hidden else "visible"}.")
+        status = "hidden" if self.hidden else "visible"
+        print(f"{self.name} now {status}.")
 
 
 class Carnivore(Animal):
@@ -40,4 +45,4 @@ class Carnivore(Animal):
 
         print(f"{self.name} bite {target.name} (-50 health).")
         target.health -= 50
-        target._check_health()
+        target.check_health()
