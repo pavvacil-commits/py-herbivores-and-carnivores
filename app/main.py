@@ -8,7 +8,7 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def _check_health(self) -> None:
+    def check_health(self) -> None:
         if self.health <= 0:
             print(f"{self.name} is dead.")
             if self in Animal.alive:
